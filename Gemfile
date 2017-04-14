@@ -1,6 +1,9 @@
 source 'https://rubygems.org'
 
-#Bootstrap Gem
+# Kaminari Gem for Pagination
+gem 'will_paginate'
+
+# Bootstrap Gem
 gem 'bootstrap-sass', '~> 3.3.5.1'
 gem 'sprockets', '2.11.0'
 
