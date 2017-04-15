@@ -1,11 +1,13 @@
 source 'https://rubygems.org'
 
-# Kaminari Gem for Pagination
+# Will_paginate Gem for Pagination Reasons
 gem 'will_paginate'
 
 # Bootstrap Gem
 gem 'bootstrap-sass', '~> 3.3.5.1'
 gem 'sprockets', '2.11.0'
+# Simple_form Gem for Form-Make
+gem 'simple_form'
 
 #Rails_12factor Gem
 gem 'rails_12factor', group: :production
