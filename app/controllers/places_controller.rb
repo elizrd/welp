@@ -1,6 +1,6 @@
 class PlacesController < ApplicationController
   
-  before_action :authenticate_user!, only: [:new, :create]
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update]
   
   def index
     @places = Place.all.paginate(page: params[:page], per_page: 10)
@@ -20,15 +20,23 @@ class PlacesController < ApplicationController
     @place = Place.find(params[:id])
   end
   
-  #Add action to edit details of place
+  # Add action to edit details of place
   def edit
     @place = Place.find(params[:id])
+    # Only user who created place can edit
+    if @place.user != current_user
+      return render text: 'Not Allowed, Human Scum', status: :forbidden
+    end
   end
   
   # Update a record in Places database
   def update
     # find the record the user wants to update
     @place = Place.find(params[:id])
+    # Only user who created place can update
+    if @place.user != current_user
+      return render text: 'Not Allowed, Human Scum', status: :forbidden
+    end
     # Update the record and save changes to the places database
     @place.update_attributes(place_params)
     # Redirect user to homepage
