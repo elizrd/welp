@@ -1,5 +1,6 @@
 @import 'bootstrap-sprockets';
 @import 'bootstrap';
+@import url('https://fonts.googleapis.com/css?family=Titillium+Web');
 
 /* The box around the places */
 .booyah-box {
@@ -22,7 +23,7 @@ h1, h1, h3, h4, h5, h6 {
 
 body {
   background: url('/assets/asanoha.png');
-  font-family: "Palatino Linotype", Palatino, Palladio, "URW Palladio L", "Book Antiqua", Baskerville, "Bookman Old Style", "Bitstream Charter", "Nimbus Roman No9 L", Garamond, "Apple Garamond", "ITC Garamond Narrow", "New Century Schoolbook", "Century Schoolbook", "Century Schoolbook L", Georgia, serif;
+  font-family: 'Titillium Web', sans-serif;
 }
 
 /* Navbar */
