@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+# Devise Gem for authentication
+gem 'devise', '>= 3.2.4'
 # Will_paginate Gem for Pagination Reasons
 gem 'will_paginate'
 
