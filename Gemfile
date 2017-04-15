@@ -1,5 +1,11 @@
 source 'https://rubygems.org'
 
+# Figaro gem
+gem 'figaro', '>= 1.0.0'
+
+# Geocoder gem
+gem 'geocoder', '1.3.4'
+
 # Devise Gem for authentication
 gem 'devise', '>= 3.2.4'
 # Will_paginate Gem for Pagination Reasons
