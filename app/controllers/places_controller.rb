@@ -25,11 +25,22 @@ class PlacesController < ApplicationController
     @place = Place.find(params[:id])
   end
   
+  # Update a record in Places database
   def update
     # find the record the user wants to update
     @place = Place.find(params[:id])
     # Update the record and save changes to the places database
-    @place.update_attribute(place_params)
+    @place.update_attributes(place_params)
+    # Redirect user to homepage
+    redirect_to root_path
+  end
+  
+  # Delete a record in Places db
+  def destroy
+    # find the record the user wants to delete
+    @place = Place.find(params[:id])
+    # Delete the record
+    @place.destroy
     # Redirect user to homepage
     redirect_to root_path
   end

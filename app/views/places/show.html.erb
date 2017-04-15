@@ -4,8 +4,10 @@
   <i><%= @place.address %></i>
   <br/><br/>
   <p><%= @place.description %></p>
-  <!--Alow user to edit place-->
   <div class='pull-right'>
+    <!--Allow user to edit place-->
     <%= link_to 'Edit', edit_place_path(@place), class: 'btn btn-primary' %>
+    <!--Allow user to delete place-->
+    <%= link_to 'Destroy', place_path(@place), method: :delete, data: {confirm: 'Are you sure you want to delete this zone, human scum?'}, class: 'btn btn-danger' %>
   </div>
 </div>
