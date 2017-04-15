@@ -1,6 +1,6 @@
 class PlacesController < ApplicationController
   
-  before_action :authenticate_user!, only: [:new, :create, :edit, :update]
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
   
   def index
     @places = Place.all.paginate(page: params[:page], per_page: 10)
@@ -47,6 +47,10 @@ class PlacesController < ApplicationController
   def destroy
     # find the record the user wants to delete
     @place = Place.find(params[:id])
+    # Only user who created place can delete
+    if @place.user != current_user
+      return render text: 'Not Allowed, Human Scum', status: :forbidden
+    end
     # Delete the record
     @place.destroy
     # Redirect user to homepage
