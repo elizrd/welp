@@ -11,8 +11,13 @@ class PlacesController < ApplicationController
   end
   
   def create
-    current_user.places.create(place_params)
-    redirect_to root_path
+    @place = current_user.places.create(place_params)
+    # Validation error
+    if @place.valid?
+      redirect_to root_path
+    else
+      render :new, status: :unprocessable_entity
+    end
   end
   
   # Add action to show details of single page  
@@ -39,8 +44,13 @@ class PlacesController < ApplicationController
     end
     # Update the record and save changes to the places database
     @place.update_attributes(place_params)
-    # Redirect user to homepage
-    redirect_to root_path
+    # Validation error
+    if @place.valid?
+      # Redirect user to homepage
+      redirect_to root_path
+    else
+      render :edit, status: :unprocessable_entity
+    end
   end
   
   # Delete a record in Places db
