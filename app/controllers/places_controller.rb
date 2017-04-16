@@ -22,7 +22,10 @@ class PlacesController < ApplicationController
   
   # Add action to show details of single page  
   def show
+    #Look up place
     @place = Place.find(params[:id])
+    #Lets add new comment
+    @comment = Comment.new
   end
   
   # Add action to edit details of place

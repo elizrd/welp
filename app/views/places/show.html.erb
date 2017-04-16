@@ -5,18 +5,15 @@
   <br/><br/>
   <p><%= @place.description %></p>
 
+<!-- Map -->
 <% if @place.latitude.present? && @place.longitude.present? %>
-  
   <script>
-
     function initMap() {
       var myLatLng = {lat: <%= @place.latitude %>, lng: <%=@place.longitude %>};
-
       var map = new google.maps.Map(document.getElementById('map'), {
         zoom: 12,
         center: myLatLng
       });
-
       var marker = new google.maps.Marker({
         position: myLatLng,
         map: map,
@@ -24,14 +21,15 @@
       });
     }
   </script>
-    
   <script async defer
   src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAufH3_z4eDyZQcebwga8c-Qmxt_oepOOw&callback=initMap">
   </script>
-    
   <div id='map'></div>
 <% end %>
-  
+<!-- end map -->
+
+<br />
+
   <div class='pull-right'>
     <% if current_user && current_user == @place.user %>
       <!--Allow user to edit place, if user is the same as the one who created record-->
@@ -41,3 +39,10 @@
     <% end %>
   </div>
 </div>
+
+<!-- Comment form -->
+<%= simple_form_for @comment, url: '#' do |f| %>
+  <%= f.input :message %>
+  <%= f.input :rating %>
+  <%= f.submit 'Add a Comment', class: 'btn btn-primary' %>
+<% end %>
