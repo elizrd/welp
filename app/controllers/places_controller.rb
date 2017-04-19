@@ -26,6 +26,8 @@ class PlacesController < ApplicationController
     @place = Place.find(params[:id])
     #Lets add new comment
     @comment = Comment.new
+    #Lets add new photo
+    @photo = Photo.new
   end
   
   # Add action to edit details of place
