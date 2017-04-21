@@ -1,5 +1,8 @@
 source 'https://rubygems.org'
 
+# Lets carrierwave communicate with Amazon S3
+gem 'fog'
+
 # CarrierWave for photo upload
 gem 'carrierwave', '~> 1.0'
 
