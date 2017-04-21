@@ -32,6 +32,10 @@
 
   <div class='pull-right'>
     <% if current_user && current_user == @place.user %>
+      <!-- Photo Button trigger modal -->
+      <button class="btn btn-primary btn-primary" data-toggle="modal" data-target="#myModal">
+        Add a photo
+      </button>
       <!--Allow user to edit place, if user is the same as the one who created record-->
       <%= link_to 'Edit', edit_place_path(@place), class: 'btn btn-primary' %>
       <!--Allow user who created place to delete it-->
@@ -49,16 +53,29 @@
       <%= photo.caption %>
     </div>
   <% end %>
-
 </div>
 
-<!-- Photo form -->
-<div class='clear'></div>
-<%= simple_form_for @photo, url: place_photos_path(@place) do |f| %>
-  <%= f.input :picture %>
-  <%= f.input :caption %>
-  <%= f.submit "Add a photo", class: 'btn btn-primary' %>
-<% end %>  
+<!-- Photo Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Add a photo</h4>
+      </div>
+      <%= simple_form_for @photo, url: place_photos_path(@place) do |f| %>
+        <div class="modal-body">
+          <%= f.input :picture %>
+          <%= f.input :caption %>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <%= f.submit "Add a photo", class: 'btn btn-primary' %>
+        </div>
+      <% end %>  
+    </div>
+  </div>
+</div>
 
 <!-- COMMENT SECTION -->
 
