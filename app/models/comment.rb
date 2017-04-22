@@ -1,6 +1,7 @@
 class Comment < ActiveRecord::Base
   belongs_to :user
   belongs_to :place
+  after_create :send_comment_email
   
   RATINGS = {
     'one shrug'     => '1_shrug',
